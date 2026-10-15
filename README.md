@@ -6,7 +6,7 @@
 
 固定硬件 · 直接实现 · 职责清晰 · 适度防御
 
-[![版本](https://img.shields.io/badge/版本-V1.0-2563eb?style=flat-square)](https://github.com/tlcrgbe/embedded-cstyle-team/releases/tag/v1.0.0)
+[![版本](https://img.shields.io/badge/版本-V1.1-2563eb?style=flat-square)](https://github.com/tlcrgbe/embedded-cstyle-team/tree/v1.1.0)
 [![语言](https://img.shields.io/badge/语言-嵌入式_C-0f766e?style=flat-square)](skills/embedded-cstyle-team/SKILL.md)
 [![注释](https://img.shields.io/badge/注释-简体中文-ea580c?style=flat-square)](#4-你会看到怎样的代码)
 
@@ -20,7 +20,7 @@
 
 这个 skill 来自实际编码比较与持续修订，希望让 AI 先理解硬件、工况和调用关系，再写出便于团队维护的嵌入式 C。**读得懂主流程，找得到状态归属，改需求时能定位到负责它的代码。**
 
-> 当前正式版本是 **V1.0**。方向已经明确，真实工程适用性仍需持续验证。后续按案例证据改规则，见 [迭代计划](ROADMAP.md)。
+> 当前正式版本是 **V1.1**。方向已经明确，真实工程适用性仍需持续验证。后续按案例证据改规则，见 [迭代计划](ROADMAP.md)。
 
 ## 1. 它能帮你做什么
 
@@ -41,7 +41,7 @@
 
 ```text
 使用 skill-installer，从 tlcrgbe/embedded-cstyle-team 仓库安装
-skills/embedded-cstyle-team，固定版本 v1.0.0，安装到全局 skills。
+skills/embedded-cstyle-team，固定版本 v1.1.0，安装到全局 skills。
 已有同名版本时先检查并备份，再更新。
 ```
 
@@ -61,7 +61,7 @@ skills/embedded-cstyle-team，固定版本 v1.0.0，安装到全局 skills。
 ```powershell
 git clone https://github.com/tlcrgbe/embedded-cstyle-team.git
 Set-Location embedded-cstyle-team
-git switch --detach v1.0.0
+git switch --detach v1.1.0
 ```
 
 只安装 skill 子目录：
@@ -140,7 +140,7 @@ skill 提供编码取舍，实际的协议、时序和硬件约定仍来自你�
 | 故障 | 外部输入在入口校验；超时、通信失败和恢复由适当层处理 |
 | 注释 | 说明用途、单位、时序与原因；局部行后注释适度对齐 |
 
-没有既有项目约定时，新 C 代码默认使用 4 空格、80 字符行宽、PascalCase 类型、小写下划线函数与变量。例如：
+没有既有项目约定时，新 C 代码默认使用 4 空格、120 字符行宽、PascalCase 类型、小写下划线函数与变量。例如：
 
 ```c
 #define DEVICE_PAGE_COUNT         3U
@@ -161,12 +161,12 @@ uint8_t retry_count;  // 当前事务的连续失败次数，成功后清零
 | V1.2 · 验证工程边界 | 单任务、ISR/DMA、多实例、数值与时间约束 | 简洁实现是否仍能保留必需的正确性处理？ |
 | V1.3 · 收敛与稳定 | 合并规则、按需参考、旧任务回归 | 能否减少指令负担，同时保持输出质量？ |
 
-这些是**计划中的方向**，不是已完成版本。每阶段通过验收后再发布，详见 [ROADMAP.md](ROADMAP.md)。
+以上为 V1.0 时制定的验证计划，尚未完成。2026-10-15 发布的 V1.1 是依据实际开发反馈做的局部规则修订，不表示同名计划阶段已完成；详见 [ROADMAP.md](ROADMAP.md)。
 
 <details>
 <summary><b>当前验证做到哪一步？</b></summary>
 
-V1.0 的 skill 格式校验已通过。开发阶段，两份设备采集示例的调试与发布主机构建各通过 12 个场景；最后的对齐调整核对了代码 token 不变和行宽。
+V1.1 的 skill 格式校验已通过，尚未进行新的独立行为验证。以下为 V1.0 的历史验证：开发阶段，两份设备采集示例的调试与发布主机构建各通过 12 个场景；最后的对齐调整核对了代码 token 不变和行宽。
 
 这些是有限示例的证据，还不足以证明所有任务都有效。最终排版由根代理整理，不是新一轮独立双 agent 验证。目标构建与板上验证需要按具体工程另行完成。
 
